@@ -1,0 +1,75 @@
+@import "tailwindcss";
+
+@theme {
+  --font-serif: "Cormorant Garamond", serif;
+  --font-sans: "Inter", sans-serif;
+  --color-emerald-900: #064e3b;
+  --color-emerald-800: #065f46;
+  --color-cream: #fdfbf7;
+  --color-gold: #d4af37;
+}
+
+@layer base {
+  body {
+    @apply bg-cream text-emerald-900 font-sans;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif;
+  }
+}
+
+.glass {
+  @apply bg-white/80 backdrop-blur-md border border-white/20 shadow-lg;
+}
+
+.liquid-glass {
+  @apply bg-white/40 backdrop-blur-xl border border-white/30 shadow-2xl;
+  background: linear-gradient(135deg, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0.1) 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.liquid-glass::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 70%);
+  animation: liquid 10s infinite linear;
+  pointer-events: none;
+}
+
+@keyframes liquid {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+html.lenis {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
+.btn-primary {
+  @apply bg-emerald-800 text-white px-6 py-2 rounded-full hover:bg-emerald-900 transition-all duration-300 shadow-md;
+}
+
+.card {
+  @apply bg-white rounded-2xl p-6 shadow-sm border border-emerald-100 hover:shadow-md transition-all duration-300;
+}

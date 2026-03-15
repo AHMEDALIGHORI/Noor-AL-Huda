@@ -1,0 +1,5 @@
+{
+  "name": "Noor Al-Huda: Islamic Wisdom & AI",
+  "description": "A comprehensive Islamic platform featuring Prophet stories, AI-powered Quranic chatbot with voice capabilities, and the science of the Quran.",
+  "requestFramePermissions": ["microphone"]
+}

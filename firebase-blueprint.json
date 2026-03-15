@@ -1,0 +1,42 @@
+{
+  "entities": {
+    "UserProfile": {
+      "title": "User Profile",
+      "description": "Stores user preferences and progress.",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string", "description": "Firebase Auth UID" },
+        "displayName": { "type": "string" },
+        "email": { "type": "string" },
+        "preferredLanguage": { "type": "string", "enum": ["en", "ar", "ur", "fr", "es"] },
+        "completedStories": { "type": "array", "items": { "type": "string" } },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["uid", "email"]
+    },
+    "Story": {
+      "title": "Prophet Story",
+      "description": "Content for Prophet stories.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "prophetName": { "type": "string" },
+        "content": { "type": "string" },
+        "moral": { "type": "string" },
+        "lessons": { "type": "array", "items": { "type": "string" } },
+        "category": { "type": "string" }
+      },
+      "required": ["prophetName", "content", "moral"]
+    }
+  },
+  "firestore": {
+    "/users/{uid}": {
+      "schema": "UserProfile",
+      "description": "User profile documents"
+    },
+    "/stories/{storyId}": {
+      "schema": "Story",
+      "description": "Collection of Prophet stories"
+    }
+  }
+}

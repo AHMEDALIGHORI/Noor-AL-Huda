@@ -1,0 +1,45 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // ===============================================================
+    // Assumed Data Model
+    // ===============================================================
+    // Collection: users
+    // Fields: uid, displayName, email, preferredLanguage, completedStories, createdAt
+    //
+    // Collection: stories
+    // Fields: id, prophetName, content, moral, lessons, category
+    // ===============================================================
+
+    // Helper Functions
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+    
+    function isOwner(userId) {
+      return isAuthenticated() && request.auth.uid == userId;
+    }
+
+    function isValidUser(data) {
+      return data.keys().hasAll(['uid', 'email', 'completedStories']) &&
+             data.uid is string &&
+             data.email is string &&
+             data.completedStories is list &&
+             data.completedStories.size() <= 100; // Limit stories tracked
+    }
+
+    // Rules
+    match /users/{userId} {
+      allow read: if isOwner(userId);
+      allow create: if isOwner(userId) && isValidUser(request.resource.data);
+      allow update: if isOwner(userId) && isValidUser(request.resource.data) &&
+                    request.resource.data.uid == resource.data.uid && // uid is immutable
+                    request.resource.data.email == resource.data.email; // email is immutable
+    }
+
+    match /stories/{storyId} {
+      allow read: if true; // Stories are public
+      allow write: if false; // Only admin (manual) can write
+    }
+  }
+}
