@@ -1,1 +1,1 @@
-docs: add screenshots section
+docs: add project structure
