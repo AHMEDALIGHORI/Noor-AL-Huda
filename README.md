@@ -1,2 +1,1 @@
-
-Add Tech Stack section
+Add Installation section
