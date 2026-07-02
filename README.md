@@ -1,1 +1,1 @@
-docs: add future improvements
+docs: fix readme wording
