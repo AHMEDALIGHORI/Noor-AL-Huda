@@ -1,2 +1,1 @@
-docs: add project structure
-
+docs: add contributing notes
