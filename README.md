@@ -1,1 +1,1 @@
-docs: improve env example
+chore: update gitignore
