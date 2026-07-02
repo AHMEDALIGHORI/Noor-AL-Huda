@@ -1,1 +1,1 @@
-docs: add contact section
+docs: add future improvements
