@@ -1,1 +1,1 @@
-docs: add contributing notes
+docs: add license note
