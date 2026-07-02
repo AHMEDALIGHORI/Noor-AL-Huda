@@ -1,1 +1,1 @@
-Add Usage section
+docs: add screenshots section
