@@ -1,1 +1,1 @@
-chore: update gitignore
+docs: improve contributing guide
