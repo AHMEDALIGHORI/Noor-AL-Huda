@@ -1,2 +1,1 @@
-
-docs: add future improvements
+docs: improve env example
