@@ -1,1 +1,1 @@
-docs: add license note
+docs: add contact section
